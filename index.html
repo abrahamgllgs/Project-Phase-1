@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Phase-1 Project</title>
+    <title>Daily Horoscope</title>
 
     <!-- css reset: sindresorhus/modern-normalize-->
     <link
@@ -21,61 +21,22 @@
   <body>
     <!-- header begins-->
     <header id="top">
-      <h1>Phase-1 Project</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="#section1">Section 1</a>
-          </li>
-          <li>
-            <a href="#section2">Section 2</a>
-          </li>
-          <li>
-            <a href="#section3">Section 3</a>
-          </li>
-        </ul>
-      </nav>
+      <h1>Daily Horoscope</h1>
     </header>
     <!-- header ends-->
 
     <!--main begins-->
     <main>
-      <section class="search-form">
-        <h2>From Section</h2>
-        <form action="GET" id="meal-form">
-          <label for="search-terms"> Search term: </label>
-          <input
-            type="text"
-            name="search-terms"
-            id="search-terms"
-            placeholder="input search term"
-            .required.
-          />
+      <lable for="brithday">EnterBirthday:</lable>
+      <input type="date" id="birthday" />
 
-          <br />
-
-          <label for="category-filter">Category filter:</label>
-          <select name="category-filter" id="category-filter" required>
-            <option value="option 1">option 1</option>
-            <option value="option 2">option 2</option>
-            <option value="option 3">option 3</option>
-          </select>
-
-          <br />
-
-          <input type="submit" value="search" />
-        </form>
-      </section>
+      <button id="findHoroscope">Find Horoscope</button>
+      <p id="HoroscopeResult"></p>
       <section id="section1"></section>
+
       <h2>Section 1</h2>
       <img src="#" alt="some image" />
       <p>Horoscope image</p>
-
-      <section id="section2"></section>
-      <h2>Section 2</h2>
-
-      <section id="section3"></section>
-      <h2>Section 3</h2>
     </main>
     <!--main ends-->
 

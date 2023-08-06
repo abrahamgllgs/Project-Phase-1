@@ -7,9 +7,9 @@ function fetchHoroscope(sunSign) {
     .then((data) => data.description);
 }
 
-function getHoroscope(birthday) {
-  const month = birthday.getmonth() + 1;
-  const day = birthday.getDate();
+function getHoroscope(birthdate) {
+  const month = birthdate.getMonth() + 1;
+  const day = birthdate.getDate();
 
   const horosocopes = {
     2: "Aquarius",
@@ -32,4 +32,13 @@ document
     const birthdayInput = document.getElementById("birthday");
     const birthday = new Date(birthdayInput.value);
     const sunSign = getHoroscope(birthday);
+
+    try {
+      const horocopeResult = document.getElementById("horoscopeResult");
+      const horosocope = await fetchHoroscope(sunSign);
+
+      horoscopeResult.textConcent = "Your horosocpe for today is ${horosocpe }";
+    } catch (error) {
+      console.error("Error fethcing horosocpe", error);
+    }
   });

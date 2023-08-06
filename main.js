@@ -1,17 +1,8 @@
-function fetchHoroscope(sunSign) {
-  const fetchHoroscopeApiURL =
-    "https://aztro.sameerkumar.website/?sign=${sunSign}&day=today;";
-
-  return fetch(ApiURL, { method: "POST" })
-    .then((respond) => respond.json())
-    .then((data) => data.description);
-}
-
 function getHoroscope(birthdate) {
   const month = birthdate.getMonth() + 1;
   const day = birthdate.getDate();
 
-  const horosocopes = {
+  const horoscopes = {
     2: "Aquarius",
     3: "Pisces",
     4: "Aries",
@@ -24,6 +15,42 @@ function getHoroscope(birthdate) {
     11: "Scorpio",
     12: "Sagittarius",
   };
+
+  if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+    return horoscopes[4];
+  } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+    return horoscopes[5];
+  } else if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) {
+    return horoscopes[6];
+  } else if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) {
+    return horoscopes[7];
+  } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+    return horoscopes[8];
+  } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+    return horoscopes[9];
+  } else if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) {
+    return horoscopes[10];
+  } else if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) {
+    return horoscopes[11];
+  } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+    return horoscopes[12];
+  } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+    return horoscopes[1];
+  } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+    return horoscopes[2];
+  } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+    return horoscopes[3];
+  } else {
+    return "Invalid date";
+  }
+}
+
+function fetchHoroscope(sign, day) {
+  const apiUrl = `https://aztro.sameerkumar.website?sign= <sign> &day= <day>`;
+
+  return fetch(apiUrl, { method: "POST" })
+    .then((response) => response.json())
+    .then((data) => data.description);
 }
 
 document
@@ -34,11 +61,11 @@ document
     const sunSign = getHoroscope(birthday);
 
     try {
-      const horocopeResult = document.getElementById("horoscopeResult");
-      const horosocope = await fetchHoroscope(sunSign);
+      const horoscopeResult = document.getElementById("horoscopeResult");
+      const horoscope = await fetchHoroscope(sunSign, "today");
 
-      horoscopeResult.textConcent = "Your horosocpe for today is ${horosocpe }";
+      horoscopeResult.textContent = "Your horoscope for today is ${horoscope }";
     } catch (error) {
-      console.error("Error fethcing horosocpe", error);
+      console.error("Error fetching horoscope", error);
     }
   });

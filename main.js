@@ -1,7 +1,6 @@
 function getHoroscope(birthdate) {
   const month = birthdate.getMonth() + 1;
   const day = birthdate.getDate();
-
   const horoscopes = {
     2: "Aquarius",
     3: "Pisces",
